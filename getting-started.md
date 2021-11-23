@@ -11,16 +11,9 @@ There are two high-level workflows described in this document:
 
 2. The administration, set up, and management of Supply Chains, Security Tools, Services, and Application Accelerators.
 
-
 ### Prerequisites
 
 In order to take full advantage of this document, ensure you have followed [Installing Tanzu Application Platform](install-intro.md).
-
----
-
-## Section 1: Developing Your First Application on Tanzu Application Platform
-
-In this section, you will deploy a simple web application to the platform, enable debugging and see your code updates added to the running application as you save them.
 
 Before getting started, ensure the following prerequisites are in place:
 
@@ -33,15 +26,19 @@ Before getting started, ensure the following prerequisites are in place:
 4. A developer namespace is setup to accommodate the developer's Workload.
    See [Set Up Developer Namespaces to Use Installed Packages](install-components.md#setup).
 
+In this section, you will deploy a simple web application to the platform, enable debugging and see your code updates added to the running application as you save them.
 
-#### A note about Application Accelerators
+---
 
-The Application Accelerator component helps app developers and app operators through the creation and generation of application accelerators. Accelerators are templates that codify best practices and ensure important configuration and structures are in place from the start.
+## Section 1: Developing Your First Application on Tanzu Application Platform
 
-Developers can bootstrap their applications and get started with feature development right away. Application Operators can create custom accelerators that reflect their desired architectures and configurations and enable fleets of developers to utilize them, decreasing operator concerns about whether developers are implementing their desired best practices.
+### A note about Application Accelerators
+
+The Application Accelerator component helps app developers and app administrators through the creation and generation of application accelerators. Accelerators are templates that codify best practices and ensure important configuration and structures are in place from the start.
+
+Developers can bootstrap their applications and get started with feature development right away. Application administrators can create custom accelerators that reflect their desired architectures and configurations and enable fleets of developers to utilize them, decreasing administrator concerns about whether developers are implementing their desired best practices.
 
 Application Accelerator templates are available as a quick start from [Tanzu Network](https://network.tanzu.vmware.com/products/app-accelerator). To create your own Application Accelerator, see [Creating an Accelerator](#creating-an-accelerator).
-
 
 ### Deploy Your Application
 
