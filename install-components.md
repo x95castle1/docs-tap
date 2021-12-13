@@ -187,19 +187,19 @@ To install Cloud Native Runtimes:
         # if deploying on a local cluster such as Kind. Otherwise, you can remove this field
         provider: local
         ```
-    
+
         >**Note:** For most installations, you can leave the `cnr-values.yaml` empty, and use the default values.
-    
+
         If you are running on a single-node cluster, such as kind or minikube, set the `provider: local`
         option. This option reduces resource requirements by using a HostPort service instead of a
         LoadBalancer and reduces the number of replicas.
-    
+
         For more information about using Cloud Native Runtimes with kind, see the
         [Cloud Native Runtimes documentation](https://docs.vmware.com/en/Cloud-Native-Runtimes-for-VMware-Tanzu/1.0/tanzu-cloud-native-runtimes-1-0/GUID-local-dns.html#config-cluster).
         If you are running on a multi-node cluster, do not set `provider`.
-    
+
         If your environment has Contour packages, Contour might conflict with the Cloud Native Runtimes installation.
-    
+
         For information about how to prevent conflicts, see [Installing Cloud Native Runtimes for Tanzu with an Existing Contour Installation](https://docs.vmware.com/en/Cloud-Native-Runtimes-for-VMware-Tanzu/1.0/tanzu-cloud-native-runtimes-1-0/GUID-contour.html) in the Cloud Native Runtimes documentation.
         Specify values for `ingress.reuse_crds`,
         `ingress.external.namespace`, and `ingress.internal.namespace` in the `cnr-values.yaml` file.
@@ -827,7 +827,7 @@ to a component that knows how to deploy the image.
     | Creating cluster role binding 'cartographer-default-cluster-rolebinding'
     - Creating package resource
     \ Package install status: Reconciling
-    
+
     Added installed package 'cartographer' in namespace 'default'
     ```
 
@@ -998,7 +998,7 @@ You must have installed:
         ```
         Deleting installed package 'ootb-supply-chain-testing-scanning' in namespace 'tap-install'.
         Are you sure? [y/N]: y
-       
+
         | Uninstalling package 'ootb-supply-chain-testing-scanning' from namespace 'tap-install'
         \ Getting package install for 'ootb-supply-chain-testing-scanning'
         - Deleting package install 'ootb-supply-chain-testing-scanning' from namespace 'tap-install'
@@ -1006,7 +1006,7 @@ You must have installed:
         | Deleting role binding 'ootb-supply-chain-testing-scanning-default-cluster-rolebinding'
         | Deleting secret 'ootb-supply-chain-testing-scanning-default-values'
         | Deleting service account 'ootb-supply-chain-testing-scanning-default-sa'
-       
+
          Uninstalled package 'ootb-supply-chain-testing-scanning' from namespace 'tap-install'
         ```
 
@@ -1071,7 +1071,7 @@ values to the properties you want to tweak. For example:
     | Creating package resource
     - Waiting for 'PackageInstall' reconciliation for 'ootb-supply-chain-testing'
     \ 'PackageInstall' resource install status: Reconciling
-    
+
     Added installed package 'ootb-supply-chain-testing' in namespace 'tap-install'
     ```
 
@@ -1121,7 +1121,7 @@ and image for vulnerabilities.
         ```
         Deleting installed package 'ootb-supply-chain-testing' in namespace 'tap-install'.
         Are you sure? [y/N]: y
-       
+
         | Uninstalling package 'ootb-supply-chain-testing' from namespace 'tap-install'
         \ Getting package install for 'ootb-supply-chain-testing'
         - Deleting package install 'ootb-supply-chain-testing' from namespace 'tap-install'
@@ -1129,7 +1129,7 @@ and image for vulnerabilities.
         | Deleting role binding 'ootb-supply-chain-testing-default-cluster-rolebinding'
         | Deleting secret 'ootb-supply-chain-testing-default-values'
         | Deleting service account 'ootb-supply-chain-testing-default-sa'
-       
+
          Uninstalled package 'ootb-supply-chain-testing' from namespace 'tap-install'
         ```
 
@@ -1194,7 +1194,7 @@ corresponding values to the properties you want to tweak. For example:
     | Creating package resource
     - Waiting for 'PackageInstall' reconciliation for 'ootb-supply-chain-testing-scanning'
     \ 'PackageInstall' resource install status: Reconciling
-    
+
     Added installed package 'ootb-supply-chain-testing-scanning' in namespace 'tap-install'
     ```
 
@@ -1656,10 +1656,7 @@ field in the values file.
 
 ## <a id='install-learning-center'></a> Install Learning Center for Tanzu Application Platform
 
-To install Tanzu Learning Center, see the following sections. 
->**Note:** If you have any issue updating values or deploying Learning Center, please see the [Learning Center - Known Issues](learning-center/known-issues/about.md) for recovery steps.
-
-For general information about Learning Center go here: [Learning Center](learning-center)
+To install Tanzu Learning Center, see the following sections.
 
 ### <a id='lc-prereqs'></a> Prerequisites
 
@@ -1667,7 +1664,7 @@ For general information about Learning Center go here: [Learning Center](learnin
 
 - [Tanzu Application Platform Prerequisites](install-general.md#prereqs)
 
-- The cluster must have an ingress router configured. If you have installed the TAP package (full or dev profile), it already deploy a contour ingress controller.
+- The cluster must have an ingress router configured. Only a basic deployment of the ingress controller is usually required.
 
 - The operator when deploying instances of the workshop environments needs to be able to expose them via an external URL for access. For the custom domain you are using, DNS must have been configured with a wildcard domain to forward all requests for sub domains of the custom domain, to the ingress router of the Kubernetes cluster
 
@@ -1689,15 +1686,14 @@ To install Learning Center:
 
     ```
      NAME                             VERSION        RELEASED-AT
-     learningcenter.tanzu.vmware.com  0.1.0          2021-12-01 08:18:48 -0500 EDT
+     learningcenter.tanzu.vmware.com  1.0.14-build.1 2021-10-22 17:02:13 -0400 EDT
     ```
 
 1. (Optional) See all the configurable parameters on this package by running:
 
-    **Remember to change the 0.x.x version**
     ```
-    tanzu package available get learningcenter.tanzu.vmware.com/0.x.x --values-schema --namespace tap-install 
-    ``` 
+    tanzu package available get learningcenter.tanzu.vmware.com/1.0.14-build.1 --values-schema -- namespace tap-install
+    ```
 
 1. Create a config file named `learning-center-config.yaml`.
 
@@ -1711,7 +1707,7 @@ To install Learning Center:
 
     When deploying workshop environment instances, the operator must be able to expose the instances
     through an external URL. This access is needed to discover the domain name that can be used as a
-    suffix to hostnames for instances.
+    suffix to host names for instances.
 
     For the custom domain you are using, DNS must have been configured with a wildcard domain to
     forward all requests for subdomains of the custom domain to the ingress router of the
@@ -1722,7 +1718,7 @@ To install Learning Center:
     address.
     For example, if `minikube ip` returns `192.168.64.1`, you can use the `192.168.64.1.nip.io`
     domain.
-    You cannot use an address of form `127.0.0.1.nip.io` or `subdomain.localhost`. This will cause a
+    You cannot use an address of form `127.0.0.1.nip.io` or `subdomain.localhost`. This causes a
     failure. Internal services needing to connect to each other will connect to themselves instead,
     because the address would resolve to the host loopback address of `127.0.0.1`.
 
@@ -1730,23 +1726,11 @@ To install Learning Center:
 
     ```
     ingressSecret:
-      certificate: |
-        -----BEGIN CERTIFICATE-----
-        MIIFLTCCBBWgAwIBAgaSAys/V2NCTG9uXa9aAiYt7WJ3MA0GCSqGaIb3DQEBCwUA
-                                        ...
-        dHa6Ly9yMy5vamxlbmNyLm9yZzAiBggrBgEFBQawAoYWaHR0cDoaL3IzLmkubGVu
-        -----END CERTIFICATE-----
-      privateKey: |
-        -----BEGIN PRIVATE KEY-----
-        MIIEvQIBADAaBgkqhkiG9waBAQEFAASCBKcwggSjAgEAAoIBAaCx4nyc2xwaVOzf
-                                        ...
-        IY/9SatMcJZivH3F1a7SXL98PawPIOSR7986P7rLFHzNjaQQ0DWTaXBRt+oUDxpN
-        -----END PRIVATE KEY-----
+        certificate: MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+        privateKey: MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
     ```
 
-    If you already have a TLS secret, follow these steps **before deploying any workshop**:
-    * Create the `learningcenter` namespace manually or the one you defined
-    * Copy the tls secret to the `learningcenter` namespace or the one you
+    If you already have a TLS secret, you can copy it to the `educates` namespace or the one you
     defined, and use the `secretName` property as in this example:
 
     ```
@@ -1759,38 +1743,58 @@ To install Learning Center:
     To use secure HTTPS connections, you must have access to a wildcard SSL certificate for the
     domain under which you want to host the workshops. You cannot use a self-signed certificate.
 
-    Wildcard certificates can be created using letsencrypt <https://letsencrypt.org/>_.
+    You can create wildcard certificates using letsencrypt <https://letsencrypt.org/>_.
     After you have the certificate, you can define the `certificate` and `privateKey` properties
-    under the `ingressSecret` property to specify the certificate on the configuration yaml.
+    under the `ingressSecret` property to specify the certificate on the configuration YAML.
 
 1. Any ingress routes created use the default ingress class.
 If you have multiple ingress class types available, and you need to override which is used, define
-the `ingressClass` property in `learning-center-config.yaml` **before deploying any workshop**:
+the `ingressClass` property in `learning-center-config.yaml` as in this example:
 
     ```
     ingressClass: contour
     ```
 
+    If you have multiple ingress controllers, ensure you select the correct one.
+    For example, Cloud Native Runtimes (CNR) deploys two ingress controllers.
+    In this case you use `contour-external` for Learning Center as in this example:
+
+    ```
+    ingressClass: contour-external
+    ```
+
 1. Install Learning Center Operator by running:
 
-    **Remember to change the 0.x.x version**
     ```
-    tanzu package install learning-center --package-name learningcenter.tanzu.vmware.com --version 0.x.x -f learning-center-config.yaml
+    tanzu package install learning-center --package-name learningcenter.tanzu.vmware.com --version 1.0.14-build.1 -f learning-center-config.yaml
     ```
 
-    The command above will create a default namespace in your Kubernetes cluster called `learningcenter`,
+    This command creates a default namespace in your Kubernetes cluster called `educates`,
     and the operator along with any required namespaced resources is created in it.
     A set of custom resource definitions and a global cluster role binding are also created.
+    The list of resources you see being created are:
+
+    ```
+    customresourcedefinition.apiextensions.k8s.io/workshops.training.eduk8s.io created
+    customresourcedefinition.apiextensions.k8s.io/workshopsessions.training.eduk8s.io created
+    customresourcedefinition.apiextensions.k8s.io/workshopenvironments.training.eduk8s.io created
+    customresourcedefinition.apiextensions.k8s.io/workshoprequests.training.eduk8s.io created
+    customresourcedefinition.apiextensions.k8s.io/trainingportals.training.eduk8s.io created
+    serviceaccount/eduk8s created
+    customresourcedefinition.apiextensions.k8s.io/systemprofiles.training.eduk8s.io created
+    clusterrolebinding.rbac.authorization.k8s.io/eduk8s-cluster-admin created
+    deployment.apps/eduk8s-operator created
+    ```
 
     You can check that the operator deployed successfully by running:
 
     ```
-    kubectl get all -n learningcenter
+    kubectl get all -n educates
     ```
 
     The Pod for the operator should be marked as running.
 
-## <a id='install-portal-proc'></a> Procedure to install the Self-Guided Tour Training Portal and Workshop
+### <a id='install-portal-proc'></a> Procedure to install the Self-Guided Tour Training Portal and Workshop
 
 To install the Self-Guided Tour Training Portal and Workshop:
 
@@ -1802,9 +1806,8 @@ To install the Self-Guided Tour Training Portal and Workshop:
 
 1. Install the Learning Center Training Portal with the Self Guided Tour workshop by running:
 
-    **Remember to change the 0.x.x version**
     ```
-    tanzu package install learning-center-workshop --package-name workshops.learningcenter.tanzu.vmware.com --version 0.x.x -n tap-install
+    tanzu package install learning-center-workshop --package-name workshops.learningcenter.tanzu.vmware.com --version 1.0.7-build.1 -n tap-install
     ```
 
 1. Check the Training Portals available in your environment by running:
@@ -1816,8 +1819,8 @@ To install the Self-Guided Tour Training Portal and Workshop:
     Example output:
 
     ```
-    NAME                       URL                                           ADMINUSERNAME         ADMINPASSWORD                      STATUS
-    learningcenter-tutorials   http://learningcenter-tutorials.example.com   learningcenter        QGBaM4CF01toPiZLW5NrXTcIYSpw2UJK   Running
+    NAME                 URL                                                ADMINUSERNAME   ADMINPASSWORD                      STATUS
+    educates-tutorials   http://educates-tutorials.example.com   educates        QGBaM4CF01toPiZLW5NrXTcIYSpw2UJK   Running
     ```
 
 
@@ -2010,7 +2013,7 @@ and you want to use `NodePort`, then create a `scst-store-values.yaml` and confi
       --version 1.0.0-beta.2 \
       --namespace tap-install \
       --values-file scst-store-values.yaml
-    
+
     - Installing package 'scst-store.tanzu.vmware.com'
     / Getting namespace 'tap-install'
     - Getting package metadata for 'scst-store.tanzu.vmware.com'
@@ -2020,7 +2023,7 @@ and you want to use `NodePort`, then create a `scst-store-values.yaml` and confi
     / Creating secret 'metadata-store-tap-install-values'
     | Creating package resource
     - Package install status: Reconciling
-    
+
     Added installed package 'scst-store' in namespace 'tap-install'
     ```
 
@@ -2147,7 +2150,7 @@ To install Supply Chain Security Tools - Sign:
         --version 1.0.0-beta.2 \
         --namespace tap-install \
         --values-file scst-sign-values.yaml
-      
+
     | Installing package 'image-policy-webhook.signing.run.tanzu.vmware.com'
     | Getting namespace 'default'
     | Getting package metadata for 'image-policy-webhook.signing.run.tanzu.vmware.com'
@@ -2157,7 +2160,7 @@ To install Supply Chain Security Tools - Sign:
     | Creating secret 'image-policy-webhook-default-values'
     / Creating package resource
     - Package install status: Reconciling
-      
+
     Added installed package 'image-policy-webhook' in namespace 'tap-install'
     ```
 
@@ -2285,7 +2288,7 @@ If you want to change from the default values, use the Scan Controller instructi
     | Creating cluster role binding 'grype-scanner-tap-install-cluster-rolebinding'
     / Creating package resource
     - Package install status: Reconciling
-    
+
      Added installed package 'grype-scanner' in namespace 'tap-install'
     ```
 
@@ -2337,7 +2340,7 @@ To install API portal:
 
     ```
     $ tanzu package install api-portal -n tap-install -p api-portal.tanzu.vmware.com -v 1.0.3
-    
+
     / Installing package 'api-portal.tanzu.vmware.com'
     | Getting namespace 'api-portal'
     | Getting package metadata for 'api-portal.tanzu.vmware.com'
@@ -2350,7 +2353,7 @@ To install API portal:
 
     Added installed package 'api-portal' in namespace 'tap-install'
     ```
-    
+
     For more information about API portal, see [API portal for VMware Tanzu](https://docs.pivotal.io/api-portal).
 
 
@@ -2587,7 +2590,7 @@ that you plan to create the `Workload` in:
 
     ```
     cat <<EOF | kubectl -n YOUR-NAMESPACE apply -f -
-    
+
     apiVersion: v1
     kind: Secret
     metadata:
@@ -2597,7 +2600,7 @@ that you plan to create the `Workload` in:
     type: kubernetes.io/dockerconfigjson
     data:
       .dockerconfigjson: e30K
-    
+
     ---
     apiVersion: v1
     kind: ServiceAccount
@@ -2608,7 +2611,7 @@ that you plan to create the `Workload` in:
     imagePullSecrets:
       - name: registry-credentials
       - name: tap-registry
-    
+
     ---
     apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
@@ -2657,7 +2660,7 @@ that you plan to create the `Workload` in:
     - apiGroups: [scst-scan.apps.tanzu.vmware.com]
       resources: ['imagescans', 'sourcescans']
       verbs: ['*']
-    
+
     ---
     apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
@@ -2670,6 +2673,6 @@ that you plan to create the `Workload` in:
     subjects:
       - kind: ServiceAccount
         name: default
-    
+
     EOF
     ```
