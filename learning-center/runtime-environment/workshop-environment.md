@@ -80,7 +80,7 @@ spec:
       domain: training.eduk8s.io
 ```
 
-If overriding the domain, by default, the workshop session will be exposed using a HTTP connection. If you require a secure HTTPS connection, you will need to have access to a wildcard SSL certificate for the domain. A secret of type ``tls`` should be created for the certificate in the ``educates`` namespace or the namespace where Learning Center operator is deployed. The name of that secret should then be set in the ``session.ingress.secret`` field.
+If overriding the domain, by default, the workshop session will be exposed using a HTTP connection. If you require a secure HTTPS connection, you will need to have access to a wildcard SSL certificate for the domain. A secret of type ``tls`` should be created for the certificate in the ``learningcenter`` namespace or the namespace where Learning Center operator is deployed. The name of that secret should then be set in the ``session.ingress.secret`` field.
 
 ```
 apiVersion: training.eduk8s.io/v1alpha1

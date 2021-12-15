@@ -177,7 +177,3 @@ The ``SystemProfile`` custom resource is created at cluster scope.
 The custom resource definitions for the custom resource described above, are created in the Kubernetes cluster when you deploy the Learning Center operator using the Tanzu CLI.
 
 This is because ``v1`` versions of CRDs are only supported from Kubernetes 1.17. If for some reason you need to use the ``v1`` versions of the CRDs at this time, you will need to create a copy of the Learning Center operator deployment resources and override the configuration so that the ``v1`` versions are used.
-
-The location of the ``v1`` versions of the CRDs is:
-
-* [https://github.com/eduk8s/eduk8s/tree/develop/resources/crds-v1](https://github.com/eduk8s/eduk8s/tree/develop/resources/crds-v1)
