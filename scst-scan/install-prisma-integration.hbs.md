@@ -60,7 +60,7 @@ To relocate images from the VMware Tanzu Network registry to your registry:
 6. Relocate the images with the imgpkg CLI by running:
 
     ```console
-    imgpkg copy -b projects.registry.vmware.com/tap-scanners-package/prisma-repo-scanning-bundle:${VERSION} --to-repo ${INSTALL_REGISTRY_HOSTNAME}/${INSTALL_REPO}/prisma-repo-scanning-bundle
+    imgpkg copy -b projects.registry.vmware.com/tanzu_practice/tap-scanners-package/prisma-repo-scanning-bundle:${VERSION} --to-repo ${INSTALL_REGISTRY_HOSTNAME}/${INSTALL_REPO}/prisma-repo-scanning-bundle
     ```
 
 ## Add the Prisma Scanner package repository
