@@ -52,7 +52,7 @@ To relocate images from the VMware Tanzu Network registry to your registry:
     - `MY-REGISTRY-USER` is the user with write access to MY-REGISTRY.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
     - `MY-REGISTRY` is your own registry.
-    - `VERSION` is your Prisma Scanner version. For example, `0.1.4-alpha.1`.
+    - `VERSION` is your Prisma Scanner version. For example, `0.1.4-alpha.3`.
     - `TARGET-REPOSITORY` is your target repository, a directory or repository on `MY-REGISTRY` that serves as the location for the installation files for Prisma Scanner.
 
 5. [Install the Carvel tool imgpkg CLI](https://docs.vmware.com/en/Cluster-Essentials-for-VMware-Tanzu/1.4/cluster-essentials/deploy.html#optionally-install-clis-onto-your-path-6).
@@ -96,7 +96,7 @@ VMware recommends installing the Prisma Scanner objects in the existing `tap-ins
     NAME:          prisma-scanner-repository
     VERSION:       71091125
     REPOSITORY:    index.docker.io/tapsme/prisma-repo-scanning-bundle
-    TAG:           0.1.4-alpha.1
+    TAG:           0.1.4-alpha.3
     STATUS:        Reconcile succeeded
     REASON:
     ```
@@ -365,7 +365,7 @@ To install a new scanner:
     $ tanzu package available list prisma.scanning.apps.tanzu.vmware.com --namespace tap-install
     / Retrieving package versions for prisma.scanning.apps.tanzu.vmware.com...
       NAME                                  VERSION           RELEASED-AT
-      prisma.scanning.apps.tanzu.vmware.com   0.1.4-alpha.1
+      prisma.scanning.apps.tanzu.vmware.com   0.1.4-alpha.3
     ```
 
 3. (Optional) Confirm that the `prisma-token-secret` secret is created.
@@ -381,12 +381,12 @@ To install a new scanner:
     Where:
 
     - `SCANNER-NAME` is the name of the scanner package you retrieved earlier.
-    - `VERSION` is your package version number. For example, `prisma.scanning.apps.tanzu.vmware.com/0.1.4-alpha.1`.
+    - `VERSION` is your package version number. For example, `prisma.scanning.apps.tanzu.vmware.com/0.1.4-alpha.3`.
 
     For example:
 
     ```console
-    $ tanzu package available get prisma.scanning.apps.tanzu.vmware.com/0.1.4-alpha.1 --values-schema -n tap-install
+    $ tanzu package available get prisma.scanning.apps.tanzu.vmware.com/0.1.4-alpha.3 --values-schema -n tap-install
 
       KEY                                           DEFAULT                                                           TYPE    DESCRIPTION
       prisma.tokenSecret.name                       prisma-token                                                      string  Reference to the secret named prisma-token containing a Prisma API Token set as
@@ -431,7 +431,7 @@ To install a new scanner:
 
     - `REFERENCE-NAME` is the name referenced by the installed package. For example, `prisma-scanner`.
     - `SCANNER-NAME` is the name of the scanner package you retrieved earlier. For example, `prisma.scanning.apps.tanzu.vmware.com`.
-    - `VERSION` is your package version number. For example, `0.1.4-alpha.1`.
+    - `VERSION` is your package version number. For example, `0.1.4-alpha.3`.
     - `PATH-TO-VALUES-YAML` is the path that points to the `values.yaml` file created earlier.
 
     For example:
@@ -439,7 +439,7 @@ To install a new scanner:
     ```console
     $ tanzu package install prisma-scanner \
       --package-name primsa.scanning.apps.tanzu.vmware.com \
-      --version 0.1.4-alpha.1 \
+      --version 0.1.4-alpha.3 \
       --namespace tap-install \
       --values-file values.yaml
     / Installing package 'prisma.scanning.apps.tanzu.vmware.com'
